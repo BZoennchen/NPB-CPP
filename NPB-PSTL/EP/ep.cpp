@@ -51,6 +51,7 @@ Authors of the C++ code:
 #include "../common/npb-CPP.hpp"
 #include "npbparams.hpp"
 #include <execution>
+#include <tbb/global_control.h>
 
 /*
  * --------------------------------------------------------------------
@@ -102,6 +103,11 @@ int main(int argc, char **argv){
 	double  sx_verify_value, sy_verify_value, sx_err, sy_err;
 	int     i, ik, kk, l, k;
 	boolean verified, timers_enabled;
+
+	int n = std::getenv("TBB_NUM_THREADS")
+            ? std::atoi(std::getenv("TBB_NUM_THREADS"))
+            : std::thread::hardware_concurrency();
+	tbb::global_control ctrl(tbb::global_control::max_allowed_parallelism, n);
 
 	timers_enabled = std::filesystem::exists("timer.flag");
 

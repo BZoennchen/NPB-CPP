@@ -147,7 +147,9 @@ typedef int INT_TYPE;
 INT_TYPE* key_buff_ptr_global; /* used by full_verify to get copies of rank info */
 int passed_verification;      
 int kx2_const, kx2;
-int num_procs = std::thread::hardware_concurrency();
+int num_procs = std::getenv("TBB_NUM_THREADS")
+            ? std::atoi(std::getenv("TBB_NUM_THREADS"))
+            : std::thread::hardware_concurrency();
 std::barrier barrier(num_procs);
 auto policy = std::execution::par;                           
 
