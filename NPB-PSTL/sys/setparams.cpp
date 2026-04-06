@@ -212,9 +212,11 @@ void check_info(int type, char class_npb){
 	   class_npb != 'B' && 
 	   class_npb != 'C' && 
 	   class_npb != 'D' &&
-	   class_npb != 'E'){
+	   class_npb != 'E' &&
+		!(class_npb == 'G' && type == CG)){
 		printf("setparams: Unknown benchmark class_npb %c\n", class_npb); 
 		printf("setparams: Allowed classes are \"S\", \"W\", \"A\", \"B\", \"C\", \"D\" and \"E\"\n");
+		printf("setparams: For CG only, \"G\" is also allowed\n");
 		exit(1);
 	}
 	if((class_npb == 'E') && type == IS){
