@@ -544,7 +544,7 @@ void write_cg_info(FILE *fp, char class_npb){
 	else if(class_npb == 'E'){
 		na=9000000; nonzer=26; niter=100; shift=shiftE;}
 	else if(class_npb == 'G'){
-		na=3000000; nonzer=23; niter=300; shift=shiftG;}
+		na=3600000; nonzer=23; niter=100; shift=shiftG;}
 	else{
 		printf("setparams: Internal error: invalid class_npb type %c\n", class_npb);
 		exit(1);

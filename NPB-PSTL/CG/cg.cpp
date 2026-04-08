@@ -206,7 +206,7 @@ int main(int argc, char **argv){
 	}else if(NA == 9000000 && NONZER == 26 && NITER == 100 && SHIFT == 1500.0){
 		class_npb = 'E';
 		zeta_verify_value = 77.522164599383;
-	}else if(NA == 3000000 && NONZER == 23 && NITER == 300 && SHIFT == 750.0){
+	}else if(NA == 3600000 && NONZER == 23 && NITER == 100 && SHIFT == 750.0){
 		class_npb = 'G';
 		// TODO: this value is incorrect0
 		zeta_verify_value = 77.522164599383;
