@@ -49,6 +49,7 @@ Authors of the C++ code:
 
 #include "../common/npb-CPP.hpp"
 #include "npbparams.hpp"
+#include <tbb/global_control.h>
 
 /*
  * ---------------------------------------------------------------------
@@ -166,6 +167,11 @@ int main(int argc, char **argv){
 	double zeta_verify_value, epsilon, err;
 
 	std::vector<std::string> t_names(T_LAST);
+
+	int n = std::getenv("TBB_NUM_THREADS")
+		? std::atoi(std::getenv("TBB_NUM_THREADS"))
+		: std::thread::hardware_concurrency();
+	tbb::global_control ctrl(tbb::global_control::max_allowed_parallelism, n);
 
 	for(int i=0; i<T_LAST; i++){
 		timer_clear(i);
